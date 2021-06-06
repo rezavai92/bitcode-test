@@ -54,5 +54,5 @@ Then run following command to run the application on local server
       user will be still logged in even if the page gets reloaded as long as token is not expired.
       
 ## Feature that could be Added 
-  * Pagination in overlays.
+  * Pagination in overview of model data , in the overlay dialogue .
       
