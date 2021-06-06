@@ -35,7 +35,9 @@ const Home = () => {
 
             <Layout>
                 <div className="container" >
-                    <h3 style={{ textAlign: "center" }} >Availabe Medical Devices</h3>
+                    <h3 style={{ textAlign: "center" }} >Available Medical Devices</h3>
+
+
                     <div style={{ textAlign: "right" }}>
                         <Button style={{
                             backgroundColor: "#04AA6D",

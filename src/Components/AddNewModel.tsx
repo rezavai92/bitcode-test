@@ -13,9 +13,11 @@ const AddModal = (props:Props)=>{
 
     const [deviceTypes,setDeviceTypes] = useState <DeviceType[]> ();
     const [selectedDeviceType,setSelectedDeviceType] = useState <number>();
-    const [brandId, setBrandId] = useState("");
-    const [modelName,setModelName] = useState("");
-    const [comment,setComment] = useState("");
+    const [brandId, setBrandId] = useState<string>("");
+    const [modelName,setModelName] = useState<string>("");
+    const [comment,setComment] = useState<string>("");
+    const [submitResult,setSubmitResult] = useState<string>("");
+    const [showSubmitResult,setShowSubmitResult] = useState<boolean>(false)
     console.log(deviceTypes)
     const {accessToken} = useContext(AppContext)
     const handleInputChange = (type: string,e:React.ChangeEvent<HTMLInputElement>)=>{
@@ -50,6 +52,7 @@ const AddModal = (props:Props)=>{
 
     }
     loadDeviceTypes();
+    
 
  },[])   
 
@@ -58,6 +61,7 @@ const AddModal = (props:Props)=>{
  const formSubmitHandler =async(e : React.ChangeEvent<HTMLFormElement> )=>{
 
     e.preventDefault()
+    setShowSubmitResult(true)
     try{
       const response = await axios.post("http://163.47.115.230:30000/api/devicemodel",{
         BrandId : brandId,
@@ -70,13 +74,14 @@ const AddModal = (props:Props)=>{
               authorization : accessToken
           }
       });
+      setSubmitResult("Ne Item has been saved successfully")
       setBrandId("")
       setModelName("")
       setComment("")
-      window.alert("new item saved successfully")
+      
     }
     catch(err){
-        window.alert("Failed to save new item")
+        setSubmitResult("Failed to save the item!");
         throw err;
     }
 
@@ -84,7 +89,15 @@ const AddModal = (props:Props)=>{
  const {show,handleClose} = props;
     return(<div>
 
-            <Modal size="lg" show={show} onHide={handleClose}>
+            <Modal size="lg" show={show} 
+                onHide={ ()=>{ 
+                    handleClose();
+                    setTimeout(()=>{
+                        setSubmitResult("");
+                        setShowSubmitResult(false) 
+                    },1000)
+                
+                } }>
                     <Modal.Header closeButton style={{  backgroundColor: "#04AA6D",
                         color: "white"}} >
                     <Modal.Title>
@@ -94,49 +107,64 @@ const AddModal = (props:Props)=>{
 
                     </Modal.Header>
                     <Modal.Body>
-                    <Form onSubmit={formSubmitHandler} >
-                        <Form.Label>Device Type : { " "} </Form.Label>
-                    <select required={true} onChange={(e)=>{setSelectedDeviceType(Number(e.target.value))}} >
-                        <option>Select Device Type</option>
-                        {
-                            deviceTypes?.map((type)=>{return(<option key={type.Id} value={type.Id} >
-                                
-                                {type.Description}
-                            </option>)})
-                        }
-                    </select>
-                    <Form.Group >
-                        <Form.Label>Brand Id </Form.Label>
-                        <Form.Control type="text" placeholder="Brand Id" value={brandId} 
-                        required={true}
-                        onChange ={(e : React.ChangeEvent<HTMLInputElement> )=>{handleInputChange("brandId",e)}}
-                        />
-                       
-                    </Form.Group>
-                    <Form.Group >
-                        <Form.Label>Model Name </Form.Label>
-                        <Form.Control type="text" placeholder="Model Name"
-                        required={true}
-                        value ={modelName}
-                        onChange ={(e : React.ChangeEvent<HTMLInputElement> )=>{handleInputChange("modelName",e)}}
-                        />
-                       
-                    </Form.Group>
-                    <Form.Group >
-                        <Form.Label>Comment </Form.Label>
-                        <Form.Control type="text" placeholder="Comment" value ={comment}
-                        onChange ={(e : React.ChangeEvent<HTMLInputElement> )=>{handleInputChange("comment",e)}}    
-                        />
-                       
-                    </Form.Group>
+                        {showSubmitResult && <div>
+                                {submitResult}
+                            </div>}
+                   {showSubmitResult ? null : 
+                      <Form onSubmit={formSubmitHandler} >
+                      <Form.Label>Device Type : { " "} </Form.Label>
+                  <select required={true} onChange={(e)=>{setSelectedDeviceType(Number(e.target.value))}} >
+                      <option>Select Device Type</option>
+                      {
+                          deviceTypes?.map((type)=>{return(<option key={type.Id} value={type.Id} >
+                              
+                              {type.Description}
+                          </option>)})
+                      }
+                  </select>
+                  <Form.Group >
+                      <Form.Label>Brand Id </Form.Label>
+                      <Form.Control type="text" placeholder="Brand Id" value={brandId} 
+                      required={true}
+                      onChange ={(e : React.ChangeEvent<HTMLInputElement> )=>{handleInputChange("brandId",e)}}
+                      />
+                     
+                  </Form.Group>
+                  <Form.Group >
+                      <Form.Label>Model Name </Form.Label>
+                      <Form.Control type="text" placeholder="Model Name"
+                      required={true}
+                      value ={modelName}
+                      onChange ={(e : React.ChangeEvent<HTMLInputElement> )=>{handleInputChange("modelName",e)}}
+                      />
+                     
+                  </Form.Group>
+                  <Form.Group >
+                      <Form.Label>Comment </Form.Label>
+                      <Form.Control type="text" placeholder="Comment" value ={comment}
+                      onChange ={(e : React.ChangeEvent<HTMLInputElement> )=>{handleInputChange("comment",e)}}    
+                      />
+                     
+                  </Form.Group>
 
-
-                        <Button type="submit" style={{backgroundColor: "#04AA6D"}} >Add</Button>
-                    </Form>
-                       
+                      
+                      <Button type="submit" style={{backgroundColor: "#04AA6D"}} >Add</Button>
+                  </Form>
+                     
+                   }
                     </Modal.Body>
                     <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
+                        {showSubmitResult && <Button onClick={()=>{
+                            setSubmitResult("")
+                            setShowSubmitResult(false)}} >
+                            Add New Model</Button>}
+                    <Button variant="secondary" onClick={ ()=>{ 
+                        handleClose();
+                        setTimeout(()=>{
+                            setSubmitResult("");
+                            setShowSubmitResult(false) 
+                        },1000)
+                    }}>
                         Close
                     </Button>
                     

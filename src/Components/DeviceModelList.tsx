@@ -17,6 +17,7 @@ const DeviceModelList = (props: Props) => {
     const [deviceModels, setDeviceModels] = useState<DeviceModelType[]>();
     const [selectedDeviceModelData, setSelectedDeviceModelData] = useState<DeviceModelDataType[]>();
     const { accessToken } = useContext(AppContext);
+    const [rowLimit,setRowLimit] = useState(10);
 
     const [overviewModalShow, setOverviewModalShow] = useState(false);
 
@@ -60,7 +61,10 @@ const DeviceModelList = (props: Props) => {
         setOverviewModalShow(false)
     }
     return (<div>
-
+        <label>Table Row Limit: </label>
+        <input type="number" min={0} value={rowLimit} onChange={(e)=>{
+            setRowLimit( Number(e.target.value)  )
+        }} />
 
         {
             <table className="device-table" >
@@ -85,7 +89,7 @@ const DeviceModelList = (props: Props) => {
                     </th>
                 </tr>
                 {
-                    deviceModels?.map((item: DeviceModelType) => {
+                    deviceModels?.slice(1,rowLimit).map((item: DeviceModelType) => {
 
                         return (<DeviceModel
                             key={item.Id}
