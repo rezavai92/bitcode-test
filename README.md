@@ -54,8 +54,5 @@ Then run following command to run the application on local server
       user will be still logged in even if the page gets reloaded as long as token is not expired.
       
 ## Feature that could be Added 
-  * Pagination  and a simple dropdown that would specify the number of rows to be showed in the table .
-  To keep the codebase simple and to the point ,no additional feature has been implemented. 
-  
- 
+  * Pagination in overlays.
       
