@@ -1,46 +1,51 @@
-# Getting Started with Create React App
+## Assignment 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This App is implemented using following technologies
+* React 
+* Typescript
+* Bootstrap
+* HTML
+* CSS
 
-## Available Scripts
+### Instruction 
+clone this git repo and run following command to install all the required libraries and packages first. Be sure you are in the project's directory.
 
-In the project directory, you can run:
+      npm istall
 
-### `npm start`
+Then run following command to run the application on local server 
+      
+      npm start
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Logic Behind the chosen design
 
-### `npm test`
+  After analyzing the given postman collection it seemed like , we can treat this app as a simple dash board for managing the medical devices.
+  A table seems to be perfect in terms of visualizing the existing data in the dashboard . For example we could also add some graph based on the collection
+  and visualize how much of the existing medical devices are in the stock, how much of which get consumed most , which one is more likely to get out of stock 
+  e.t.c . Since the given data is just some text collection, it seems like , A tabular representation might be a good fit.
+  
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Workflow 
+  
+  This app consists of total 8 components. They are
+  
+  * Login Component : It deals with user login 
+  * Home Component  : It holds the all the contents that are supposed to be presented in home route.
+  * Layout Component : It holds the base layout for the app .like navbar, main content , footer e.t.c.
+  * Navbar Component  : It consists of the common navigation for the app .
+  * DeviceModel Component : It deals with inidividual device model that would be mapped down in it's mother component "DeviceModelList".
+  * DeviceModelList Component : It deals with the full list of device model, map individual device model to a table , holds necessary methods e.t.c.
+  * Overview Modal  : It deals with the overview of selected model and shows all of them in an overlay dialogue.
+  * AddNewModel Component : It deals with adding new model into the collection.
+    
+## Followed Best Practices 
+  * making individual component for individual service
+  * loose coupling and tight cohesion among  components
+  * writing code in typescript that should increase data integrity and flexibility and reduce code breaks significantly as compared to a javascript codebase.
+  
+## Feature that could be Added 
+  * Pagination in overlays and Limiting rows in table .But most of the API services provide pagination route for this type of task
+  .unfortuately ,no such api is given in this task.Still pagination could be implemented on clientside.First, saving the whole list into an array then depending upon user's request , providing the limited number of data from the array as wanted. to keep the codebase simple and to the point no additional feature has been implemented.
+  
+ 
+      
