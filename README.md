@@ -44,8 +44,8 @@ Then run following command to run the application on local server
   * writing code in typescript that should increase data integrity and flexibility and reduce code breaks significantly as compared to a javascript codebase.
   
 ## Feature that could be Added 
-  * Pagination in overlays and Limiting rows in table .But most of the API services provide pagination route for this type of task
-  .unfortuately ,no such api is given in this task.Still pagination could be implemented on clientside.First, saving the whole list into an array then depending upon user's request , providing the limited number of data from the array as wanted. to keep the codebase simple and to the point no additional feature has been implemented.
+  * Pagination  and a simple dropdown that would specify the number of rows to be showed in the table .
+  To keep the codebase simple and to the point ,no additional feature has been implemented. 
   
  
       
