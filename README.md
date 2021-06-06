@@ -19,10 +19,11 @@ Then run following command to run the application on local server
 
 ### Logic Behind the chosen design
 
-  After analyzing the given postman collection it seemed like , we can treat this app as a simple dash board for managing the medical devices.
-  A table seems to be perfect in terms of visualizing the existing data in the dashboard . For example we could also add some graph based on the collection
+  After analyzing the given postman collection it seemed like we can treat this app as a simple dashboard for managing the medical devices. Furthermore,There
+  is option like "adding new model" also triggered me treat it as admin stuff. 
+  A table seems to be perfect in terms of visualizing the existing data in the dashboard .For example we could also add some graph based on the collection if 
   and visualize how much of the existing medical devices are in the stock, how much of which get consumed most , which one is more likely to get out of stock 
-  e.t.c . Since the given data is just some text collection, it seems like , A tabular representation might be a good fit.
+  e.t.c, provided that  relevant data and api is provided . Since the given data is just some text collection, it seems like , A tabular representation might be a good fit.
   
 
 ### Workflow 
