@@ -1,0 +1,17 @@
+.login-container{
+    height: 100vh;
+    background : linear-gradient(to bottom right, #04AA6D,white ) ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-box{
+    border: 1px solid silver;
+    padding : 50px;
+    border-radius: 2%;
+    z-index: 100;
+    background-color: white;
+    
+
+}
