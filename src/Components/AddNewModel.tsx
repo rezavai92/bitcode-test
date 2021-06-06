@@ -84,7 +84,7 @@ const AddModal = (props:Props)=>{
  const {show,handleClose} = props;
     return(<div>
 
-<Modal size="lg" show={show} onHide={handleClose}>
+            <Modal size="lg" show={show} onHide={handleClose}>
                     <Modal.Header closeButton style={{  backgroundColor: "#04AA6D",
                         color: "white"}} >
                     <Modal.Title>
@@ -141,7 +141,7 @@ const AddModal = (props:Props)=>{
                     </Button>
                     
                     </Modal.Footer>
-                </Modal>
+             </Modal>
     </div>)
 
 }
