@@ -44,7 +44,7 @@ Then run following command to run the application on local server
   * Overview Modal  : It deals with the overview of selected model and shows all of them in an overlay dialogue.
   * AddNewModel Component : It deals with adding new model into the collection.
     
-## Followed Best Practices 
+## Followed  Practices 
 
   * making individual component for individual service
   * loose coupling and tight cohesion among  components
