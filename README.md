@@ -27,9 +27,14 @@ Then run following command to run the application on local server
 
 ### Workflow 
   
-  This app consists of total 8 components. They are
+  This app consists of total 9 components. They are
   
-  * Login Component : It deals with user login 
+  * App Component : It is actually the mother component that holds the all other components .
+  * AppContextPorivder : This component is implemented to enable the context API feature . A context api is a good choice for keeping state in 
+      a central component in order to serve them to the consumer component. For exmaple , accesstoken is such an state that most of the components will need 
+      it if there is an api call and it needs the accessToken. keeping such common state into a central component gives much more flexibility. remembering who is       signed in now during the whole app life cycle is another vital state that should be stored into a central component.
+      
+  * Login Component : It deals with user login . After successful login, the received accestoken and  signed in user is saved into the cookie.
   * Home Component  : It holds the all the contents that are supposed to be presented in home route.
   * Layout Component : It holds the base layout for the app .like navbar, main content , footer e.t.c.
   * Navbar Component  : It consists of the common navigation for the app .
@@ -39,10 +44,14 @@ Then run following command to run the application on local server
   * AddNewModel Component : It deals with adding new model into the collection.
     
 ## Followed Best Practices 
+
   * making individual component for individual service
   * loose coupling and tight cohesion among  components
   * writing code in typescript that should increase data integrity and flexibility and reduce code breaks significantly as compared to a javascript codebase.
-  
+  * Context API
+  * saving accessToken and signed in user in the cookie to make sure that , appilcation will remember the logged in user untill the token expires. it means ,
+      user will be still logged in even if the page gets reloaded as long as token is not expired.
+      
 ## Feature that could be Added 
   * Pagination  and a simple dropdown that would specify the number of rows to be showed in the table .
   To keep the codebase simple and to the point ,no additional feature has been implemented. 
